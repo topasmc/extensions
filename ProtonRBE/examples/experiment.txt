@@ -1,0 +1,53 @@
+includeFile = rbe_scorers.txt
+includeFile = CellLineV79.txt
+
+#-- source
+s:So/Disk/Type                     = "Beam"
+s:So/Disk/Component                = "World"
+s:So/Disk/BeamParticle             = "proton"
+d:So/Disk/BeamEnergy               = 100 MeV
+s:So/Disk/BeamShape                = "Ellipse"
+d:So/Disk/BeamPositionCutoffX      = 5. mm
+d:So/Disk/BeamPositionCutoffY      = 5. mm
+s:So/Disk/BeamPositionCutoffShape  = "Ellipse"
+s:So/Disk/BeamPositionDistribution = "Flat"
+u:So/Disk/BeamEnergySpread         = 0
+s:So/Disk/BeamAngularDistribution  = "None"
+d:So/Disk/BeamAngularSpreadX       = 0 rad
+d:So/Disk/BeamAngularSpreadY       = 0 rad
+i:So/Disk/NumberOfHistoriesInRun   = 100
+
+
+#-- apparatus
+d:Ge/World/HLX       = 220 cm
+d:Ge/World/HLY       = 220 cm
+d:Ge/World/HLZ       = 220 cm
+b:Ge/World/Invisible = "TRUE"
+s:Ge/World/Material  = "Air"
+
+s:Ge/Phantom/Parent   = "World"
+s:Ge/Phantom/Type     = "TsBox"
+s:Ge/Phantom/Material = "G4_WATER"
+d:Ge/Phantom/HLX      = 100.0 mm
+d:Ge/Phantom/HLY      = 100.0 mm
+d:Ge/Phantom/HLZ      = 100.0 mm
+d:Ge/Phantom/TransX   = 0. m
+d:Ge/Phantom/TransY   = 0. m
+d:Ge/Phantom/TransZ   = 101. mm
+d:Ge/Phantom/RotX     = 0. deg
+d:Ge/Phantom/RotY     = 0. deg
+d:Ge/Phantom/RotZ     = 0. deg
+
+s:Ge/Sample/Parent   = "Phantom"
+s:Ge/Sample/Type     = "TsBox"
+s:Ge/Sample/Material = "G4_WATER"
+d:Ge/Sample/HLX      = 2.0 mm
+d:Ge/Sample/HLY      = 2.0 mm
+d:Ge/Sample/HLZ      = 100.0 mm
+d:Ge/Sample/TransX   = 0. m
+d:Ge/Sample/TransY   = 0. m
+d:Ge/Sample/TransZ   = 0. m
+d:Ge/Sample/RotX     = 0. deg
+d:Ge/Sample/RotY     = 0. deg
+d:Ge/Sample/RotZ     = 0. deg
+i:Ge/Sample/ZBins    = 200

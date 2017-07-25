@@ -1,0 +1,11 @@
+i:Ts/NumberOfThreads = 8
+i:Ts/Seed = 666
+i:Ts/ShowHistoryCountAtInterval = 1000
+i:So/Disk/NumberOfHistoriesInRun = 10000
+
+s:Sc/OutputQuantity = "RBE"
+d:Sc/PrescribedDose = 4 Gy
+sv:Sc/CellLines     = 1 "CellLineV79"
+b:Sc/SimultaneousExposure = "False"
+
+includeFile = experiment.txt

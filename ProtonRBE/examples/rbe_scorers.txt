@@ -1,0 +1,130 @@
+#-- shared sub-scorers
+s:Sc/PhysDose/Quantity   = "DoseToWater"
+s:Sc/PhysDose/Component  = "Sample"
+b:Sc/PhysDose/PreCalculateStoppingPowerRatios = "True"
+s:Sc/PhysDose/IfOutputFileAlreadyExists = "Overwrite"
+s:Sc/PhysDose/OutputType = "csv"
+s:Sc/PhysDose/OutputFile = "results/PhysicalDose"
+
+s:Sc/ProtonLET/Quantity   = "ProtonLET"
+s:Sc/ProtonLET/Component  = "Sample"
+s:Sc/ProtonLET/IfOutputFileAlreadyExists = "Overwrite"
+s:Sc/ProtonLET/OutputType = "csv"
+s:Sc/ProtonLET/OutputFile = "results/LET"
+
+
+#-- these parameters should be overwritten in run.txt
+s:Sc/OutputQuantity = "RBE"
+d:Sc/PrescribedDose = 4 Gy
+sv:Sc/CellLines     = 1 "CellLineV79"
+b:Sc/SimultaneousExposure = "True"
+
+
+#-- RBE scorers
+s:Sc/Carabe/Quantity                     = "RBE_Carabe"
+s:Sc/Carabe/Component                    = "Sample"
+s:Sc/Carabe/OutputQuantity               = Sc/OutputQuantity
+d:Sc/Carabe/PrescribedDose               = Sc/PrescribedDose Gy
+sv:Sc/Carabe/CellLines                   = Sc/CellLines
+b:Sc/Carabe/SimultaneousExposure         = Sc/SimultaneousExposure
+s:Sc/Carabe/OutputType                   = "csv"
+s:Sc/Carabe/OutputFile                   = "results/Carabe_" + Sc/OutputQuantity
+s:Sc/Carabe/IfOutputFileAlreadyExists    = "Overwrite"
+s:Sc/Carabe/ReferencedSubScorer_Dose     = "PhysDose"
+s:Sc/Carabe/ReferencedSubScorer_LET      = "ProtonLET"
+
+s:Sc/Chen/Quantity                       = "RBE_Chen"
+s:Sc/Chen/Component                      = "Sample"
+s:Sc/Chen/OutputQuantity                 = Sc/OutputQuantity
+d:Sc/Chen/PrescribedDose                 = Sc/PrescribedDose Gy
+sv:Sc/Chen/CellLines                     = Sc/CellLines
+b:Sc/Chen/SimultaneousExposure           = Sc/SimultaneousExposure
+s:Sc/Chen/OutputType                     = "csv"
+s:Sc/Chen/OutputFile                     = "results/Chen_" + Sc/OutputQuantity
+s:Sc/Chen/IfOutputFileAlreadyExists      = "Overwrite"
+s:Sc/Chen/ReferencedSubScorer_Dose       = "PhysDose"
+s:Sc/Chen/ReferencedSubScorer_LET        = "ProtonLET"
+
+s:Sc/McNamara/Quantity                   = "RBE_McNamara"
+s:Sc/McNamara/Component                  = "Sample"
+s:Sc/McNamara/OutputQuantity             = Sc/OutputQuantity
+d:Sc/McNamara/PrescribedDose             = Sc/PrescribedDose Gy
+sv:Sc/McNamara/CellLines                 = Sc/CellLines
+b:Sc/McNamara/SimultaneousExposure       = Sc/SimultaneousExposure
+s:Sc/McNamara/OutputType                 = "csv"
+s:Sc/McNamara/OutputFile                 = "results/McNamara_" + Sc/OutputQuantity
+s:Sc/McNamara/IfOutputFileAlreadyExists  = "Overwrite"
+s:Sc/McNamara/ReferencedSubScorer_Dose   = "PhysDose"
+s:Sc/McNamara/ReferencedSubScorer_LET    = "ProtonLET"
+
+s:Sc/MKMLET/Quantity                     = "RBE_MKMLET"
+s:Sc/MKMLET/Component                    = "Sample"
+s:Sc/MKMLET/OutputQuantity               = Sc/OutputQuantity
+d:Sc/MKMLET/PrescribedDose               = Sc/PrescribedDose Gy
+sv:Sc/MKMLET/CellLines                   = Sc/CellLines
+b:Sc/MKMLET/SimultaneousExposure         = Sc/SimultaneousExposure
+s:Sc/MKMLET/OutputType                   = "csv"
+s:Sc/MKMLET/OutputFile                   = "results/MKMLET_" + Sc/OutputQuantity
+s:Sc/MKMLET/IfOutputFileAlreadyExists    = "Overwrite"
+s:Sc/MKMLET/ReferencedSubScorer_Dose     = "PhysDose"
+s:Sc/MKMLET/ReferencedSubScorer_LET      = "ProtonLET"
+
+s:Sc/Wedenberg/Quantity                  = "RBE_Wedenberg"
+s:Sc/Wedenberg/Component                 = "Sample"
+s:Sc/Wedenberg/OutputQuantity            = Sc/OutputQuantity
+d:Sc/Wedenberg/PrescribedDose            = Sc/PrescribedDose Gy
+sv:Sc/Wedenberg/CellLines                = Sc/CellLines
+b:Sc/Wedenberg/SimultaneousExposure      = Sc/SimultaneousExposure
+s:Sc/Wedenberg/OutputType                = "csv"
+s:Sc/Wedenberg/OutputFile                = "results/Wedenberg_" + Sc/OutputQuantity
+s:Sc/Wedenberg/IfOutputFileAlreadyExists = "Overwrite"
+s:Sc/Wedenberg/ReferencedSubScorer_Dose  = "PhysDose"
+s:Sc/Wedenberg/ReferencedSubScorer_LET   = "ProtonLET"
+
+s:Sc/Wilkens/Quantity                    = "RBE_Wilkens"
+s:Sc/Wilkens/Component                   = "Sample"
+s:Sc/Wilkens/OutputQuantity              = Sc/OutputQuantity
+d:Sc/Wilkens/PrescribedDose              = Sc/PrescribedDose Gy
+sv:Sc/Wilkens/CellLines                  = Sc/CellLines
+b:Sc/Wilkens/SimultaneousExposure        = Sc/SimultaneousExposure
+s:Sc/Wilkens/OutputType                  = "csv"
+s:Sc/Wilkens/OutputFile                  = "results/Wilkens_" + Sc/OutputQuantity
+s:Sc/Wilkens/IfOutputFileAlreadyExists   = "Overwrite"
+s:Sc/Wilkens/ReferencedSubScorer_Dose    = "PhysDose"
+s:Sc/Wilkens/ReferencedSubScorer_LET     = "ProtonLET"
+
+s:Sc/RMF/Quantity                        = "RBE_RMF"
+s:Sc/RMF/Component                       = "Sample"
+s:Sc/RMF/OutputQuantity                  = Sc/OutputQuantity
+d:Sc/RMF/PrescribedDose                  = Sc/PrescribedDose Gy
+sv:Sc/RMF/CellLines                      = Sc/CellLines
+b:Sc/RMF/SimultaneousExposure            = Sc/SimultaneousExposure
+s:Sc/RMF/OutputType                      = "csv"
+s:Sc/RMF/OutputFile                      = "results/RMF_" + Sc/OutputQuantity
+s:Sc/RMF/IfOutputFileAlreadyExists       = "Overwrite"
+s:Sc/RMF/ReferencedSubScorer_Dose        = "PhysDose"
+s:Sc/RMF/ReferencedSubScorer_LET         = "ProtonLET"
+
+s:Sc/MKM_PIDE/Quantity                   = "RBE_TabulatedAlphaBeta"
+s:Sc/MKM_PIDE/Component                  = "Sample"
+s:Sc/MKM_PIDE/OutputQuantity             = Sc/OutputQuantity
+d:Sc/MKM_PIDE/PrescribedDose             = Sc/PrescribedDose Gy
+sv:Sc/MKM_PIDE/CellLines                 = Sc/CellLines
+b:Sc/MKM_PIDE/SimultaneousExposure       = Sc/SimultaneousExposure
+s:Sc/MKM_PIDE/OutputType                 = "csv"
+s:Sc/MKM_PIDE/OutputFile                 = "results/MKM_PIDE_" + Sc/OutputQuantity
+s:Sc/MKM_PIDE/IfOutputFileAlreadyExists  = "Overwrite"
+s:Sc/MKM_PIDE/ReferencedSubScorer_Dose   = "PhysDose"
+s:Sc/MKM_PIDE/ModelName                  = "MKM_PIDE"
+
+s:Sc/MKM_Kase/Quantity                   = "RBE_TabulatedAlphaBeta"
+s:Sc/MKM_Kase/Component                  = "Sample"
+s:Sc/MKM_Kase/OutputQuantity             = Sc/OutputQuantity
+d:Sc/MKM_Kase/PrescribedDose             = Sc/PrescribedDose Gy
+sv:Sc/MKM_Kase/CellLines                 = Sc/CellLines
+b:Sc/MKM_Kase/SimultaneousExposure       = Sc/SimultaneousExposure
+s:Sc/MKM_Kase/OutputType                 = "csv"
+s:Sc/MKM_Kase/OutputFile                 = "results/MKM_Kase_" + Sc/OutputQuantity
+s:Sc/MKM_Kase/IfOutputFileAlreadyExists  = "Overwrite"
+s:Sc/MKM_Kase/ReferencedSubScorer_Dose   = "PhysDose"
+s:Sc/MKM_Kase/ModelName                  = "MKM_Kase"
