@@ -2,10 +2,11 @@ RBE Scorer extensions for TOPAS
 
 Full documentation is found at http://topas.readthedocs.io/en/latest/extensions/rbe.html
 
+These extension scorers require TOPAS version 3.1 or later.
+
 The directory consists of the following file types:
 Scorers:
-TsScoreDose* : These score quantities in the ProcessHits function like normal
-scorers.
+TsScoreDose* : These score quantities in the ProcessHits function like normal scorers.
 
 RBE Scorers: These do not have a ProcessHits function and instead combine scored
 properties (dose, LET, etc) to RBE or biological dose, etc.
