@@ -1,0 +1,152 @@
+##  Example of y scoring
+
+#-- source
+s:So/Disk/Type                     = "Beam"
+s:So/Disk/Component                = "BeamPosition"
+s:So/Disk/BeamParticle             = "proton"
+d:So/Disk/BeamEnergy               = 131 MeV
+u:So/Disk/BeamEnergySpread         = 0.86
+s:So/Disk/BeamPositionCutoffShape  = "Ellipse"
+s:So/Disk/BeamPositionDistribution = "Gaussian"
+d:So/Disk/BeamPositionCutoffX      = 5 mm   # X extent of position (if Flat or Gaussian) 
+d:So/Disk/BeamPositionCutoffY      = 5 mm   # X extent of position (if Flat or Gaussian)
+d:So/Disk/BeamPositionSpreadX      = 11. mm   # distribution (if Gaussian)
+d:So/Disk/BeamPositionSpreadY      = 11. mm   # distribution (if Gaussian)
+s:So/Disk/BeamAngularDistribution  = "Gaussian"
+d:So/Disk/BeamAngularCutoffX       = 90. deg
+d:So/Disk/BeamAngularCutoffY       = 90. deg
+d:So/Disk/BeamAngularSpreadX       = 0.425 mrad
+d:So/Disk/BeamAngularSpreadY       = 0.425 mrad
+i:So/Disk/NumberOfHistoriesInRun   = 1000
+Ts/ShowHistoryCountAtInterval = 100
+
+s:Ge/BeamPosition/Parent   = "World"
+s:Ge/BeamPosition/Type     = "Group"
+d:Ge/BeamPosition/TransX   = 0. mm
+d:Ge/BeamPosition/TransY   = 0. mm
+d:Ge/BeamPosition/TransZ   = -40 cm 
+d:Ge/BeamPosition/RotX     = 0. deg
+d:Ge/BeamPosition/RotY     = 0. deg
+d:Ge/BeamPosition/RotZ     = 0. deg
+
+#-- apparatus
+d:Ge/World/HLX       = 220 cm
+d:Ge/World/HLY       = 220 cm
+d:Ge/World/HLZ       = 220 cm
+b:Ge/World/Invisible = "TRUE"
+s:Ge/World/Material  = "Air"
+
+#-- water phantom
+s:Ge/Phantom/Parent   = "World"
+s:Ge/Phantom/Type     = "TsBox"
+s:Ge/Phantom/Material = "G4_WATER"
+d:Ge/Phantom/HLX      = 150.0 mm
+d:Ge/Phantom/HLY      = 150.0 mm
+d:Ge/Phantom/HLZ      = 150.0 mm
+d:Ge/Phantom/TransX   = 0. mm
+d:Ge/Phantom/TransY   = 0. mm
+d:Ge/Phantom/TransZ   = 150. mm
+d:Ge/Phantom/RotX     = 0. deg
+d:Ge/Phantom/RotY     = 0. deg
+d:Ge/Phantom/RotZ     = 0. deg
+
+
+s:Ge/CutRegion/Parent   = "Phantom"
+s:Ge/CutRegion/Type     = "TsBox"
+s:Ge/CutRegion/Material = "G4_WATER"
+d:Ge/CutRegion/HLX      = 2.540 mm
+d:Ge/CutRegion/HLY      = 2.865 mm
+d:Ge/CutRegion/HLZ      = 1.232 mm
+d:Ge/CutRegion/TransX   = 0. mm
+d:Ge/CutRegion/TransY   = 0. mm
+d:Ge/CutRegion/TransZ   = -128. mm   
+d:Ge/CutRegion/RotX     = 0. deg
+d:Ge/CutRegion/RotY     = 0. deg
+d:Ge/CutRegion/RotZ     = 0. deg
+s:Ge/CutRegion/AssignToRegionNamed = "MyRegion1"
+
+s:Ge/StepLimitRegion/Parent   = "CutRegion"
+s:Ge/StepLimitRegion/Type     = "TsBox"
+s:Ge/StepLimitRegion/Material = "G4_WATER"
+d:Ge/StepLimitRegion/HLX      = 1.540 mm
+d:Ge/StepLimitRegion/HLY      = 1.865 mm
+d:Ge/StepLimitRegion/HLZ      = 0.232 mm
+d:Ge/StepLimitRegion/TransX   = 0. mm
+d:Ge/StepLimitRegion/TransY   = 0. mm
+d:Ge/StepLimitRegion/TransZ   = 0. mm
+d:Ge/StepLimitRegion/RotX     = 0. deg
+d:Ge/StepLimitRegion/RotY     = 0. deg
+d:Ge/StepLimitRegion/RotZ     = 0. deg
+#s:Ge/StepLimitRegion/AssignToRegionNamed = "MyRegion"
+d:Ge/StepLimitRegion/MaxStepSize = 1. um 
+
+
+s:Ge/MyMicrodosimeter/Type="TsSOIMicrodosimeter" 
+s:Ge/MyMicrodosimeter/Parent="StepLimitRegion"
+s:Ge/MyMicrodosimeter/Material="G4_AIR"
+d:Ge/MyMicrodosimeter/TransX   = 0. mm
+d:Ge/MyMicrodosimeter/TransY   = 0. mm
+d:Ge/MyMicrodosimeter/TransZ   = 0. mm
+d:Ge/MyMicrodosimeter/MaxStepSize = 1. um 
+s:Ge/MyMicrodosimeter/SensitiveVolume/DrawingStyle = "Wireframe"
+s:Ge/MyMicrodosimeter/SensitiveVolume/Color="red"
+s:Ge/MyMicrodosimeter/BridgeVolume/DrawingStyle = "Wireframe"
+s:Ge/MyMicrodosimeter/BridgeVolume/Color="red"
+s:Ge/MyMicrodosimeter/AlOverLayer/DrawingStyle = "Wireframe"
+s:Ge/MyMicrodosimeter/AlOverLayer/Color="green"
+s:Ge/MyMicrodosimeter/SiO2OverLayerTopSV/DrawingStyle = "Wireframe"
+s:Ge/MyMicrodosimeter/SiO2OverLayerTopSV/Color="blue"
+s:Ge/MyMicrodosimeter/SiO2OverLayerTopBridge/DrawingStyle = "Wireframe"
+s:Ge/MyMicrodosimeter/SiO2OverLayerTopBridge/Color="blue"
+s:Ge/MyMicrodosimeter/SiO2OverLayerTopTop/DrawingStyle = "Wireframe"
+s:Ge/MyMicrodosimeter/SiO2OverLayerTopTop/Color="yellow"
+
+s:Sc/Scorer/Quantity    = "TsYScorer"
+s:Sc/Scorer/Component   = "StepLimitRegion"
+#
+# Mandatory parameters
+i:Sc/Scorer/GeometryNumber            = 2
+i:Sc/Scorer/NumberOfHistoriesInRun    = So/Disk/NumberOfHistoriesInRun
+d:Sc/Scorer/SensitiveVolumeRadius     = 12 mm      # radius of sensitive volume (except for silicon microdosimeter)
+d:Sc/Scorer/TissueEquivalentRadius    = 10 um      # radius of equivalent size of tissue equivalent volume (to calculate mean chord length)
+d:Sc/Scorer/MeanPathLength           = 10 um        # Mean path length for SOI detector 
+d:Sc/Scorer/TransX                    = 0 mm         # x position of sensitive volume from world center
+d:Sc/Scorer/TransY                    = 0 mm         # y position of sensitive volume from world center
+d:Sc/Scorer/TransZ                    = 22 mm     # y position of sensitive volume from world center
+s:Sc/Scorer/OutputType                = "ASCII"       # OutputType must be ASCII, Binary or ROOT (unit: keV/um)
+s:Sc/Scorer/IfOutputFileAlreadyExists = "Overwrite" 
+#
+# Optional parameters
+u:Sc/Scorer/LinealEnergyLowerlimit      = 0.5         # in unit of keV/um
+u:Sc/Scorer/LinealEnergyUpperlimit     = 10000        # in unit of keV/um  
+b:Sc/Scorer/IncludeFrequencyMeanLinealEnergy   = "True"
+b:Sc/Scorer/IncludeDoseMeanLinealEnergy   = "True"
+b:Sc/Scorer/GetRBEWithBiologicalWeightFunction = "True"
+b:Sc/Scorer/GetRBEWithMKModel = "True"
+b:Sc/Scorer/GetStatisticInfo =  "True"
+i:Sc/Scorer/SpectrumUpdateTimes = 100
+
+sv:Ph/Default/Modules = 6 "g4em-standard_opt4" "g4h-phy_QGSP_BIC_HP" "g4decay" "g4ion-binarycascade" "g4h-elastic_HP" "g4stopping" 
+#sv:Ph/Default/Modules = 6 "g4em-dna" "g4h-phy_QGSP_BIC_HP" "g4decay" "g4ion-binarycascade" "g4h-elastic_HP" "g4stopping" 
+#sv:Ph/Default/Modules = 1 "g4em-dna"  
+d:Ph/Default/CutForElectron = 0.01 mm
+d:Ph/Default/ForRegion/MyRegion1/CutForElectron = 0.001 mm 
+
+#s:Gr/ViewA/Type = "OpenGL"
+#s:Gr/view/Type = "HepRep"
+i:Gr/ViewA/WindowSizeX = 1024
+i:Gr/ViewA/WindowSizeY = 768
+b:Gr/ViewA/IncludeGeometry                  = "t"
+b:Gr/ViewA/IncludeAxes = "True"
+d:Gr/ViewA/AxesSize = 100. um 
+s:Gr/ViewA/AxesComponent = "MyMicrodosimeter"
+d:Gr/ViewA/Theta = 180 deg
+d:Gr/ViewA/Phi = 0 deg
+#s:Gr/ViewA/Projection = "Perspective"
+#d:Gr/ViewA/PerspectiveAngle = 30 deg
+u:Gr/ViewA/Zoom = 2000.
+
+#Ts/PauseBeforeQuit = "True"
+i:Ts/NumberOfThreads = 10
+i:Ts/Seed = 1
+

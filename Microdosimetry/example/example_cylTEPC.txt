@@ -1,0 +1,216 @@
+##  Example of y scoring
+
+#-- source
+s:So/Disk/Type                     = "Beam"
+s:So/Disk/Component                = "BeamPosition"
+s:So/Disk/BeamParticle             = "GenericIon(6,12,6)"
+d:So/Disk/BeamEnergy               = 2304 MeV
+u:So/Disk/BeamEnergySpread         = 0.6     # 0.1583
+s:So/Disk/BeamPositionCutoffShape  = "Rectangle"
+s:So/Disk/BeamPositionDistribution = "Flat"
+d:So/Disk/BeamPositionCutoffX      = 1.5 cm
+d:So/Disk/BeamPositionCutoffY      = 1.5 cm
+s:So/Disk/BeamAngularDistribution  = "Gaussian"
+d:So/Disk/BeamAngularCutoffX       = 90. deg
+d:So/Disk/BeamAngularCutoffY       = 90. deg
+d:So/Disk/BeamAngularSpreadX       = 0.425 mrad
+d:So/Disk/BeamAngularSpreadY       = 0.425 mrad
+i:So/Disk/NumberOfHistoriesInRun   = 1000
+Ts/ShowHistoryCountAtInterval = 10
+
+s:Ge/BeamPosition/Parent   = "World"
+s:Ge/BeamPosition/Type     = "Group"
+d:Ge/BeamPosition/TransX   = 0. mm
+d:Ge/BeamPosition/TransY   = 0. mm
+d:Ge/BeamPosition/TransZ   = -5. mm
+d:Ge/BeamPosition/RotX     = 0. deg
+d:Ge/BeamPosition/RotY     = 0. deg
+d:Ge/BeamPosition/RotZ     = 0. deg
+
+#-- apparatus
+d:Ge/World/HLX       = 220 cm
+d:Ge/World/HLY       = 220 cm
+d:Ge/World/HLZ       = 220 cm
+b:Ge/World/Invisible = "TRUE"
+s:Ge/World/Material  = "Air"
+
+s:Ge/PMMA/Parent   = "World"
+s:Ge/PMMA/Type     = "TsBox"
+s:Ge/PMMA/Material = "G4_PLEXIGLASS"
+d:Ge/PMMA/HLX      = 150.0 mm
+d:Ge/PMMA/HLY      = 150.0 mm
+d:Ge/PMMA/HLZ      = 1.65 mm
+d:Ge/PMMA/TransX   = 0. mm
+d:Ge/PMMA/TransY   = 0. mm
+d:Ge/PMMA/TransZ   = -0.65 mm
+d:Ge/PMMA/RotX     = 0. deg
+d:Ge/PMMA/RotY     = 0. deg
+d:Ge/PMMA/RotZ     = 0. deg
+
+s:Ge/Phantom/Parent   = "World"
+s:Ge/Phantom/Type     = "TsBox"
+s:Ge/Phantom/Material = "G4_WATER"
+d:Ge/Phantom/HLX      = 150.0 mm
+d:Ge/Phantom/HLY      = 150.0 mm
+d:Ge/Phantom/HLZ      = 150.0 mm
+d:Ge/Phantom/TransX   = 0. mm
+d:Ge/Phantom/TransY   = 0. mm
+d:Ge/Phantom/TransZ   = 151. mm
+d:Ge/Phantom/RotX     = 0. deg
+d:Ge/Phantom/RotY     = 0. deg
+d:Ge/Phantom/RotZ     = 0. deg
+
+sv:Ma/Propane/Components = 2 "Hydrogen" "Carbon" 
+uv:Ma/Propane/Fractions = 2 0.1818 0.8182 
+d:Ma/Propane/Density = 1.11 mg/cm3  #0.814 mg/cm3 
+d:Ma/Propane/MeanExcitationEnergy = 59.5 eV
+
+sv:Ma/TEgas/Components = 4 "Hydrogen" "Carbon" "Nitrogen" "Oxygen" 
+uv:Ma/TEgas/Fractions = 4 0.102672 0.56894 0.035022 0.293366 
+d:Ma/TEgas/Density = 1.11 mg/cm3 
+d:Ma/TEgas/MeanExcitationEnergy = 59.5 eV
+
+sv:Ma/Rexolite/Components = 2 "Hydrogen" "Carbon" 
+uv:Ma/Rexolite/Fractions = 2 0.077 0.923
+d:Ma/Rexolite/Density = 1.045 g/cm3 
+#d:Ma/Rexolite/MeanExcitationEnergy = 59.5 eV
+
+s:Ge/Sample1/Parent   = "Phantom"      
+s:Ge/Sample1/Type     = "TsCylinder"
+s:Ge/Sample1/Material = "Aluminum"
+d:Ge/Sample1/RMin     = 0.0 mm
+d:Ge/Sample1/RMax     = 1.35 mm
+d:Ge/Sample1/SPhi     = 0.0 deg
+d:Ge/Sample1/DPhi     = 360. deg
+d:Ge/Sample1/HL       = 0.655 mm     
+d:Ge/Sample1/TransX   = 0. mm       
+d:Ge/Sample1/TransY   = 0. mm       
+d:Ge/Sample1/TransZ   = -73 mm   
+d:Ge/Sample1/RotX     = 90. deg      
+d:Ge/Sample1/RotY     = 0. deg       
+d:Ge/Sample1/RotZ     = 0. deg
+s:Ge/Sample1/AssignToRegionNamed = "MyRegion1"
+s:Ge/Sample1/DrawingStyle = "Solid"
+
+s:Ge/Sample2/Parent   = "Sample1"
+s:Ge/Sample2/Type     = "TsCylinder"
+s:Ge/Sample2/Material = "Rexolite"
+d:Ge/Sample2/RMin     = 0. mm
+d:Ge/Sample2/RMax     = 1.15 mm
+d:Ge/Sample2/SPhi     = 0. deg
+d:Ge/Sample2/DPhi     = 360. deg
+d:Ge/Sample2/HL       = 0.655 mm
+d:Ge/Sample2/TransX   = 0. mm
+d:Ge/Sample2/TransY   = 0. mm
+d:Ge/Sample2/TransZ   = 0. mm
+d:Ge/Sample2/RotX     = 0. deg
+d:Ge/Sample2/RotY     = 0. deg
+d:Ge/Sample2/RotZ     = 0. deg
+s:Ge/Sample2/AssignToRegionNamed = "MyRegion2"
+s:Ge/Sample2/DrawingStyle = "Solid"
+
+s:Ge/Sample3/Parent   = "Sample2"
+s:Ge/Sample3/Type     = "TsCylinder"
+s:Ge/Sample3/Material = "G4_A-150_TISSUE"
+d:Ge/Sample3/RMin     = 0. mm
+d:Ge/Sample3/RMax     = 0.8 mm
+d:Ge/Sample3/SPhi     = 0. deg
+d:Ge/Sample3/DPhi     = 360. deg
+d:Ge/Sample3/HL       = 0.655 mm
+d:Ge/Sample3/TransX   = 0. mm
+d:Ge/Sample3/TransY   = 0. mm
+d:Ge/Sample3/TransZ   = 0. mm
+d:Ge/Sample3/RotX     = 0. deg
+d:Ge/Sample3/RotY     = 0. deg
+d:Ge/Sample3/RotZ     = 0. deg
+s:Ge/Sample3/AssignToRegionNamed = "MyRegion3"
+s:Ge/Sample3/DrawingStyle = "Solid"
+
+s:Ge/Sample4/Parent   = "Sample3"     # A 3um A150 layer with low energy cut threshold
+s:Ge/Sample4/Type     = "TsCylinder"
+s:Ge/Sample4/Material = "G4_A-150_TISSUE"
+d:Ge/Sample4/RMin     = 0. mm
+d:Ge/Sample4/RMax     = 0.453 mm
+d:Ge/Sample4/SPhi     = 0. deg
+d:Ge/Sample4/DPhi     = 360. deg
+d:Ge/Sample4/HL       = 0.655 mm
+d:Ge/Sample4/TransX   = 0. mm
+d:Ge/Sample4/TransY   = 0. mm
+d:Ge/Sample4/TransZ   = 0. mm
+d:Ge/Sample4/RotX     = 0. deg
+d:Ge/Sample4/RotY     = 0. deg
+d:Ge/Sample4/RotZ     = 0. deg
+s:Ge/Sample4/AssignToRegionNamed = "MyRegion4"
+s:Ge/Sample4/DrawingStyle = "Solid"
+
+s:Ge/Sample5/Parent   = "Sample4"
+s:Ge/Sample5/Type     = "TsCylinder"
+s:Ge/Sample5/Material = "Rexolite"
+d:Ge/Sample5/RMin     = 0. mm
+d:Ge/Sample5/RMax     = 0.45 mm
+d:Ge/Sample5/SPhi     = 0. deg
+d:Ge/Sample5/DPhi     = 360. deg
+d:Ge/Sample5/HL       = 0.655 mm
+d:Ge/Sample5/TransX   = 0. mm
+d:Ge/Sample5/TransY   = 0. mm
+d:Ge/Sample5/TransZ   = 0. mm
+d:Ge/Sample5/RotX     = 0. deg
+d:Ge/Sample5/RotY     = 0. deg
+d:Ge/Sample5/RotZ     = 0. deg
+s:Ge/Sample5/AssignToRegionNamed = "MyRegion5"
+s:Ge/Sample5/DrawingStyle = "Solid"
+
+s:Ge/Sample/Parent   = "Sample5"
+s:Ge/Sample/Type     = "TsCylinder"
+s:Ge/Sample/Material = "Propane"
+d:Ge/Sample/RMin     = 0. mm
+d:Ge/Sample/RMax     = 0.45 mm
+d:Ge/Sample/SPhi     = 0. deg
+d:Ge/Sample/DPhi     = 360. deg
+d:Ge/Sample/HL       = 0.45 mm
+d:Ge/Sample/TransX   = 0. mm
+d:Ge/Sample/TransY   = 0. mm
+d:Ge/Sample/TransZ   = 0. mm
+d:Ge/Sample/RotX     = 0. deg
+d:Ge/Sample/RotY     = 0. deg
+d:Ge/Sample/RotZ     = 0. deg
+s:Ge/Sample/AssignToRegionNamed = "MyRegion"
+s:Ge/Sample/DrawingStyle = "Solid"
+
+
+s:Sc/Scorer/Quantity    = "TsYScorer"
+s:Sc/Scorer/Component   = "Sample"
+#
+# Mandatory parameters
+i:Sc/Scorer/GeometryNumber            = 1
+i:Sc/Scorer/NumberOfHistoriesInRun    = So/Disk/NumberOfHistoriesInRun
+d:Sc/Scorer/SensitiveVolumeRadius     = 0.45 mm      # radius of sensitive volume (except for silicon microdosimeter)
+d:Sc/Scorer/TissueEquivalentRadius    = 0.5  um      # radius of equivalent size of tissue equivalent volume (to calculate mean chord length)
+#d:Sc/Scorer/MeanPathLength           = 10 um        # Mean path length for SOI detector 
+d:Sc/Scorer/TransX                    = 0 mm         # x position of sensitive volume from world center
+d:Sc/Scorer/TransY                    = 0 mm         # y position of sensitive volume from world center
+d:Sc/Scorer/TransZ                    = 78 mm        # y position of sensitive volume from world center
+s:Sc/Scorer/OutputType                = "ASCII"      # OutputType must be ASCII, Binary or ROOT (unit: keV/um)
+s:Sc/Scorer/IfOutputFileAlreadyExists = "Overwrite" 
+#
+# Optional parameters
+#u:Sc/Scorer/LinealEnergyLowerlimit      = 0.3         # in unit of keV/um
+#u:Sc/Scorer/LinealEnergyUpperlimit     = 1000        # in unit of keV/um  
+b:Sc/Scorer/IncludeFrequencyMeanLinealEnergy   = "True"
+b:Sc/Scorer/IncludeDoseMeanLinealEnergy   = "True"
+b:Sc/Scorer/GetRBEWithBiologicalWeightFunction = "True"
+b:Sc/Scorer/GetRBEWithMKModel = "True"
+b:Sc/Scorer/GetStatisticInfo =  "True"
+i:Sc/Scorer/SpectrumUpdateTimes = 1000
+
+sv:Ph/Default/Modules = 6 "g4em-standard_opt4" "g4h-phy_QGSP_BIC_HP" "g4decay" "g4ion-binarycascade" "g4h-elastic_HP" "g4stopping" 
+d:Ph/Default/CutForElectron = 0.1 mm
+d:Ph/Default/ForRegion/MyRegion1/CutForElectron = 0.01 mm 
+d:Ph/Default/ForRegion/MyRegion2/CutForElectron = 0.01 mm 
+d:Ph/Default/ForRegion/MyRegion3/CutForElectron = 0.01 mm 
+d:Ph/Default/ForRegion/MyRegion5/CutForElectron = 0.01 mm 
+d:Ph/Default/ForRegion/MyRegion4/CutForElectron = 0.001 mm 
+d:Ph/Default/ForRegion/MyRegion/CutForElectron = 0.01 mm
+
+i:Ts/NumberOfThreads = 10
+i:Ts/Seed = 1

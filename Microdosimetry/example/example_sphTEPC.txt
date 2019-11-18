@@ -1,0 +1,156 @@
+##  Example of y scoring
+
+#-- source
+s:So/Disk/Type                     = "Beam"
+s:So/Disk/Component                = "BeamPosition"
+s:So/Disk/BeamParticle             = "GenericIon(6,12,6)"
+d:So/Disk/BeamEnergy               = 3600 MeV
+u:So/Disk/BeamEnergySpread         = 0.0849
+s:So/Disk/BeamPositionCutoffShape  = "Ellipse"
+s:So/Disk/BeamPositionDistribution = "Gaussian"
+d:So/Disk/BeamPositionCutoffX      = 1.5 cm
+d:So/Disk/BeamPositionCutoffY      = 1.5 cm
+d:So/Disk/BeamPositionSpreadX      = 1.274 mm
+d:So/Disk/BeamPositionSpreadY      = 1.274 mm
+s:So/Disk/BeamAngularDistribution  = "Gaussian"
+d:So/Disk/BeamAngularCutoffX       = 90. deg
+d:So/Disk/BeamAngularCutoffY       = 90. deg
+d:So/Disk/BeamAngularSpreadX       = 0.425 mrad
+d:So/Disk/BeamAngularSpreadY       = 0.425 mrad
+i:So/Disk/NumberOfHistoriesInRun   = 1000
+Ts/ShowHistoryCountAtInterval = 100
+
+s:Ge/BeamPosition/Parent   = "World"
+s:Ge/BeamPosition/Type     = "Group"
+d:Ge/BeamPosition/TransX   = 0. mm
+d:Ge/BeamPosition/TransY   = 0. mm
+d:Ge/BeamPosition/TransZ   = -250. mm
+d:Ge/BeamPosition/RotX     = 0. deg
+d:Ge/BeamPosition/RotY     = 0. deg
+d:Ge/BeamPosition/RotZ     = 0. deg
+
+#-- apparatus
+d:Ge/World/HLX       = 220 cm
+d:Ge/World/HLY       = 220 cm
+d:Ge/World/HLZ       = 220 cm
+b:Ge/World/Invisible = "TRUE"
+s:Ge/World/Material  = "Air"
+
+s:Ge/Phantom/Parent   = "World"
+s:Ge/Phantom/Type     = "TsBox"
+s:Ge/Phantom/Material = "G4_WATER"
+d:Ge/Phantom/HLX      = 150.0 mm
+d:Ge/Phantom/HLY      = 150.0 mm
+d:Ge/Phantom/HLZ      = 150.0 mm
+d:Ge/Phantom/TransX   = 0. mm
+d:Ge/Phantom/TransY   = 0. mm
+d:Ge/Phantom/TransZ   = 151. mm
+d:Ge/Phantom/RotX     = 0. deg
+d:Ge/Phantom/RotY     = 0. deg
+d:Ge/Phantom/RotZ     = 0. deg
+
+sv:Ma/TEgas/Components = 4 "Hydrogen" "Carbon" "Nitrogen" "Oxygen" 
+uv:Ma/TEgas/Fractions = 4 0.1 0.558 0.054 0.288
+d:Ma/TEgas/Density = 0.2126 mg/cm3 
+
+s:Ge/AlShellOut/Parent   = "Phantom"
+s:Ge/AlShellOut/Type     = "TsSphere"
+s:Ge/AlShellOut/Material = "Aluminum"
+d:Ge/AlShellOut/RMin     = 0. mm
+d:Ge/AlShellOut/RMax     = 10.0 mm
+d:Ge/AlShellOut/SPhi     = 0. deg
+d:Ge/AlShellOut/DPhi     = 360. deg
+d:Ge/AlShellOut/STheta   = 0. deg
+d:Ge/AlShellOut/DTheta   = 180. deg
+d:Ge/AlShellOut/TransX   = 0. mm
+d:Ge/AlShellOut/TransY   = 0. mm
+d:Ge/AlShellOut/TransZ   = 29.1   mm   
+d:Ge/AlShellOut/RotX     = 0. deg
+d:Ge/AlShellOut/RotY     = 0. deg
+d:Ge/AlShellOut/RotZ     = 0. deg
+
+s:Ge/AlShellIn/Parent   = "AlShellOut"
+s:Ge/AlShellIn/Type     = "TsSphere"
+s:Ge/AlShellIn/Material = "TEgas"
+d:Ge/AlShellIn/RMin     = 0. mm
+d:Ge/AlShellIn/RMax     = 9.82 mm
+d:Ge/AlShellIn/SPhi     = 0. deg
+d:Ge/AlShellIn/DPhi     = 360. deg
+d:Ge/AlShellIn/STheta   = 0. deg
+d:Ge/AlShellIn/DTheta   = 180. deg
+d:Ge/AlShellIn/TransX   = 0. mm
+d:Ge/AlShellIn/TransY   = 0. mm
+d:Ge/AlShellIn/TransZ   = 0. mm
+d:Ge/AlShellIn/RotX     = 0. deg
+d:Ge/AlShellIn/RotY     = 0. deg
+d:Ge/AlShellIn/RotZ     = 0. deg
+
+s:Ge/A150/Parent   = "AlShellIn"
+s:Ge/A150/Type     = "TsSphere"
+s:Ge/A150/Material = "G4_A-150_TISSUE"
+d:Ge/A150/RMin     = 0. mm
+d:Ge/A150/RMax     = 7.62 mm
+d:Ge/A150/SPhi     = 0. deg
+d:Ge/A150/DPhi     = 360. deg
+d:Ge/A150/STheta   = 0. deg
+d:Ge/A150/DTheta   = 180. deg
+d:Ge/A150/TransX   = 0. mm
+d:Ge/A150/TransY   = 0. mm
+d:Ge/A150/TransZ   = 0. mm
+d:Ge/A150/RotX     = 0. deg
+d:Ge/A150/RotY     = 0. deg
+d:Ge/A150/RotZ     = 0. deg
+s:Ge/A150/AssignToRegionNamed = "MyRegion3"
+#d:Ge/A150/MaxStepSize = 0.1 mm 
+
+s:Ge/TEgasSV/Parent   = "A150"
+s:Ge/TEgasSV/Type     = "TsSphere"
+s:Ge/TEgasSV/Material = "TEgas"
+d:Ge/TEgasSV/RMin     = 0. mm
+d:Ge/TEgasSV/RMax     = 6.35 mm
+d:Ge/TEgasSV/SPhi     = 0. deg
+d:Ge/TEgasSV/DPhi     = 360. deg
+d:Ge/TEgasSV/STheta   = 0. deg
+d:Ge/TEgasSV/DTheta   = 180. deg
+d:Ge/TEgasSV/TransX   = 0. mm
+d:Ge/TEgasSV/TransY   = 0. mm
+d:Ge/TEgasSV/TransZ   = 0. mm
+d:Ge/TEgasSV/RotX     = 0. deg
+d:Ge/TEgasSV/RotY     = 0. deg
+d:Ge/TEgasSV/RotZ     = 0. deg
+s:Ge/TEgasSV/AssignToRegionNamed = "MyRegion"
+#d:Ge/TEgasSV/MaxStepSize = 0.1 mm 
+
+s:Sc/Scorer/Quantity    = "TsYScorer"
+s:Sc/Scorer/Component   = "TEgasSV"
+#
+# Mandatory parameters
+i:Sc/Scorer/NumberOfHistoriesInRun    = So/Disk/NumberOfHistoriesInRun
+i:Sc/Scorer/GeometryNumber            = 0
+d:Sc/Scorer/SensitiveVolumeRadius     = 6.35 mm      # radius of sensitive volume (except for silicon microdosimeter)
+d:Sc/Scorer/TissueEquivalentRadius    = 1.35 um      # radius of equivalent size of tissue equivalent volume (to calculate mean chord length)
+#d:Sc/Scorer/MeanPathLength           = 10 um        # Mean path length for SOI detector 
+d:Sc/Scorer/TransX                    = 0 mm         # x position of sensitive volume from world center
+d:Sc/Scorer/TransY                    = 0 mm         # y position of sensitive volume from world center
+d:Sc/Scorer/TransZ                    = 180.1 mm     # y position of sensitive volume from world center
+s:Sc/Scorer/OutputType                = "ASCII"       # OutputType must be ASCII, Binary or ROOT (unit: keV/um)
+s:Sc/Scorer/IfOutputFileAlreadyExists = "Overwrite" 
+#
+# Optional parameters
+u:Sc/Scorer/LinealEnergyLowerlimit      = 0.3         # in unit of keV/um
+u:Sc/Scorer/LinealEnergyUpperlimit     = 1000        # in unit of keV/um  
+b:Sc/Scorer/IncludeFrequencyMeanLinealEnergy   = "True"
+b:Sc/Scorer/IncludeDoseMeanLinealEnergy   = "True"
+b:Sc/Scorer/GetRBEWithBiologicalWeightFunction = "True"
+b:Sc/Scorer/GetRBEWithMKModel = "True"
+u:Sc/Scorer/PileupProbability = 0.02
+b:Sc/Scorer/GetStatisticInfo =  "True"
+i:Sc/Scorer/SpectrumUpdateTimes = 100
+
+sv:Ph/Default/Modules = 6 "g4em-standard_opt4" "g4h-phy_QGSP_BIC_HP" "g4decay" "g4ion-binarycascade" "g4h-elastic_HP" "g4stopping" 
+d:Ph/Default/CutForElectron = 0.1 mm
+d:Ph/Default/ForRegion/MyRegion3/CutForElectron = 0.01 mm 
+d:Ph/Default/ForRegion/MyRegion/CutForElectron = 9. mm
+
+i:Ts/NumberOfThreads = 10
+i:Ts/Seed = 1
