@@ -56,6 +56,8 @@ TsScoreRBE_RMF::TsScoreRBE_RMF(TsParameterManager* pM, TsMaterialManager* mM, Ts
 {
     if (fOutputQuantity == "rbe")
         SetUnit("");
+    else if (fOutputQuantity == "rbe_dsb")
+        SetUnit("");
     else if (fOutputQuantity == "alpha")
         SetUnit("/Gy");
     else if (fOutputQuantity == "beta")
@@ -67,7 +69,7 @@ TsScoreRBE_RMF::TsScoreRBE_RMF(TsParameterManager* pM, TsMaterialManager* mM, Ts
     else {
         G4cerr << "Topas is exiting due to a serious error in scoring setup." << G4endl;
         G4cerr << "No output quantity " << fOutputQuantity << " defined." << G4endl;
-        G4cerr << "Valid output quantities are: RBE, Alpha, Beta, SurvivalFraction and RBE_x_Dose (BiologicalDose)." << G4endl;
+        G4cerr << "Valid output quantities are: RBE, RBE_DSB, Alpha, Beta, SurvivalFraction and RBE_x_Dose (BiologicalDose)." << G4endl;
         exit(1);
     }
 
@@ -101,7 +103,7 @@ G4int TsScoreRBE_RMF::CombineSubScorers()
     G4double density = 1.0 * g/cm3;  // ProtonLET scores LET per unit density
 
     std::vector<G4double> normalizedDose = NormalizeDose(doseScorer->fFirstMomentMap);
-
+// RBE Cell survival based on RBE RMF model which uses RBE_DSB as input.  RBE_DSB caluclated with MCDS??  sm/jm Nov 18  
     if (fOutputQuantity == "rbe") {
         for (unsigned index = 0; index<fFirstMomentMap.size(); index++) {
             TsModelRBE_RMF* model = dynamic_cast<TsModelRBE_RMF*>(GetModelForVoxel(index));
@@ -137,7 +139,13 @@ G4int TsScoreRBE_RMF::CombineSubScorers()
             fFirstMomentMap[index] = normalizedDose[index] * model->GetRBE(normalizedDose[index], density*letScorer->fFirstMomentMap[index], RBE_DSB);
         }
     }
-
+    else if (fOutputQuantity == "rbe_dsb") {
+        for (unsigned index = 0; index<fFirstMomentMap.size(); index++) {
+            TsModelRBE_RMF* model = dynamic_cast<TsModelRBE_RMF*>(GetModelForVoxel(index));
+            G4double RBE_DSB = dose_RBE_DSB_Scorer->fFirstMomentMap[index] / doseScorer->fFirstMomentMap[index];
+            fFirstMomentMap[index] = RBE_DSB;  
+        }
+    }
     return 0;
 }
 
