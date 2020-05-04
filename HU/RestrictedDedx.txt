@@ -1,0 +1,29 @@
+includeFile = HUtoMaterialSchneider.txt 
+
+So/Demo/NumberOfHistoriesInRun= 30
+Ge/BeamPosition/TransZ = 0 cm
+
+
+s:Sc/CTScoringBox0/Quantity = "hucorrection"
+s:Sc/CTScoringBox0/Component = "MyBox1"
+s:Sc/CTScoringBox0/OutputFile = "test"
+s:Sc/CTScoringBox0/OutputFileName = "HUCorrection"
+s:Sc/CTScoringBox0/OutputType = "csv"
+b:Sc/CTScoringBox0/OutputToConsole = "FALSE"
+
+#d:Ph/Default/CutForElectron = 0.1431 mm 
+d:Ph/Default/CutForElectron = 0.005 mm 
+
+s:Ge/MyBox1/Type="TsBox"
+s:Ge/MyBox1/Material="G4_WATER"
+s:Ge/MyBox1/Parent="World"
+d:Ge/MyBox1/HLX=1.1 m
+d:Ge/MyBox1/HLY=1.1 m
+d:Ge/MyBox1/HLZ=1.1 m
+d:Ge/MyBox1/TransX=0. m
+d:Ge/MyBox1/TransY=0. m
+d:Ge/MyBox1/TransZ=0. m
+d:Ge/MyBox1/RotX=0. deg
+d:Ge/MyBox1/RotY=0. deg
+d:Ge/MyBox1/RotZ=0. deg
+

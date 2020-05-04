@@ -1,0 +1,68 @@
+includeFile = HUtoMaterialSchneiderNoCorrection.txt 
+
+s:Sc/ScoreBox/Quantity = "GetStoppingPowerRatiosWithEnergyBinning"
+s:Sc/ScoreBox/Component = "MyBox1"
+s:Sc/ScoreBox/OutputFile = "NotUsedFile"
+s:Sc/ScoreBox/OutputFileName = "StoppingPowerRatios_Ebinned"
+s:Sc/ScoreBox/OutputType = "csv"
+b:Sc/ScoreBox/OutputToConsole = "FALSE"
+s:Sc/ScoreBox/IfOutputFileAlreadyExists = "Overwrite"
+
+s:So/Disk/Type = "Beam"
+s:So/Disk/Component =  "BeamPosition"
+s:So/Disk/BeamParticle = "proton"
+d:So/Disk/BeamEnergy =  100 MeV
+s:So/Disk/BeamPositionCutoffShape = "Ellipse"
+d:So/Disk/BeamPositionCutoffX = 1.5 mm
+d:So/Disk/BeamPositionCutoffY = 1.5 mm
+s:So/Disk/BeamPositionDistribution = "None"
+u:So/Disk/BeamEnergySpread = 0
+s:So/Disk/BeamAngularDistribution  = "None"
+d:So/Disk/BeamAngularCutoffX       = 90. deg
+d:So/Disk/BeamAngularCutoffY       = 90. deg
+d:So/Disk/BeamAngularSpreadX       = 0.0 rad
+d:So/Disk/BeamAngularSpreadY       = 0.0 rad
+
+i:So/Disk/NumberOfHistoriesInRun=10
+
+Ge/BeamPosition/TransZ = 0 cm
+s:Ge/MyBox1/Type="TsBox"
+s:Ge/MyBox1/Material="G4_ALUMINUM_OXIDE"
+s:Ge/MyBox1/Parent="World"
+d:Ge/MyBox1/HLX=1.0 m
+d:Ge/MyBox1/HLY=1.0 m
+d:Ge/MyBox1/HLZ=1.0 m
+d:Ge/MyBox1/TransX=0. m
+d:Ge/MyBox1/TransY=0. m
+d:Ge/MyBox1/TransZ=0. m
+d:Ge/MyBox1/RotX=0. deg
+d:Ge/MyBox1/RotY=0. deg
+d:Ge/MyBox1/RotZ=0. deg
+
+
+s:Ge/MyBox2/Type="TsBox"
+s:Ge/MyBox2/Material="Lexan"
+s:Ge/MyBox2/Parent="World"
+d:Ge/MyBox2/HLX=0.1 m
+d:Ge/MyBox2/HLY=0.1 m
+d:Ge/MyBox2/HLZ=0.1 m
+d:Ge/MyBox2/TransX=2. m
+d:Ge/MyBox2/TransY=2. m
+d:Ge/MyBox2/TransZ=0. m
+d:Ge/MyBox2/RotX=0. deg
+d:Ge/MyBox2/RotY=0. deg
+d:Ge/MyBox2/RotZ=0. deg
+
+
+s:Ge/MyBox3/Type="TsBox"
+s:Ge/MyBox3/Material="Lucite"
+s:Ge/MyBox3/Parent="World"
+d:Ge/MyBox3/HLX=0.1 m
+d:Ge/MyBox3/HLY=0.1 m
+d:Ge/MyBox3/HLZ=0.1 m
+d:Ge/MyBox3/TransX=2. m
+d:Ge/MyBox3/TransY=1. m
+d:Ge/MyBox3/TransZ=0. m
+d:Ge/MyBox3/RotX=0. deg
+d:Ge/MyBox3/RotY=0. deg
+d:Ge/MyBox3/RotZ=0. deg
