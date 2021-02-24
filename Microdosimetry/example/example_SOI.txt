@@ -103,6 +103,8 @@ s:Ge/MyMicrodosimeter/SiO2OverLayerTopTop/Color="yellow"
 
 s:Sc/Scorer/Quantity    = "TsYScorer"
 s:Sc/Scorer/Component   = "StepLimitRegion"
+b:Sc/Scorer/PropagateToChildren = "True"
+
 #
 # Mandatory parameters
 i:Sc/Scorer/GeometryNumber            = 2
